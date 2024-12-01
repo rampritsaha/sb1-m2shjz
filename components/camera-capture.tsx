@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Camera, CameraIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -58,10 +58,10 @@ export function CameraCapture({ onCapture, onClose }: CameraCaptureProps) {
     }
   };
 
-  useState(() => {
+  useEffect(() => {
     startCamera();
     return () => stopCamera();
-  }, []);
+  }, [facingMode]);
 
   return (
     <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm">
